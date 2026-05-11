@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. Nithya Kruthi — PhD Researcher & Bioinformatician</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange:      #f4671a;
+  --orange-light:#ff9a5c;
+  --orange-pale: #fff3ec;
+  --orange-mid:  #fde4d0;
+  --lavender:    #7c5cbf;
+  --lav-light:   #a987e0;
+  --lav-pale:    #f0ebfa;
+  --lav-mid:     #ddd0f7;
+  --white:       #ffffff;
+  --off:         #faf9f7;
+  --ink:         #1a1614;
+  --ink2:        #3d3530;
+  --ink3:        #7a706a;
+  --ink4:        #b5aba5;
+  --border:      rgba(0,0,0,0.07);
+  --shadow-sm:   0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md:   0 8px 32px rgba(0,0,0,0.09);
+  --shadow-lg:   0 20px 60px rgba(0,0,0,0.12);
+  --play:        'Playfair Display', Georgia, serif;
+  --body:        'Outfit', sans-serif;
+  --mono:        'JetBrains Mono', monospace;
+  --radius:      16px;
+  --radius-sm:   10px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ─── PARTICLE CANVAS ─── */
+#particles-canvas {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; opacity: 0.45;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  height: 60px;
+}
+
+.nav-logo {
+  font-family: var(--play);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+.nav-logo-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--lavender));
+  display: inline-block;
+}
+
+.tab-bar {
+  display: flex; gap: 2px;
+  background: var(--off);
+  border-radius: 999px;
+  padding: 4px;
+  list-style: none;
+}
+
+.tab-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 0.4rem 1.1rem;
+  font-family: var(--body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink3);
+  background: none; border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tab-btn:hover { color: var(--ink); background: var(--white); }
+
+.tab-btn.active {
+  background: var(--white);
+  color: var(--orange);
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-btn.active .ti { color: var(--orange); }
+
+.nav-cta {
+  font-size: 0.75rem; font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  background: linear-gradient(135deg, var(--orange), #e8520f);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ─── PAGES ─── */
+.page { display: none; padding-top: 60px; min-height: 100vh; position: relative; z-index: 1; }
+.page.active { display: block; animation: fadein 0.45s ease; }
+@keyframes fadein { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+
+/* ══════════════════════════════════════
+   PAGE 1 — HERO / HOME
+══════════════════════════════════════ */
+
+.hero {
+  min-height: calc(100vh - 60px);
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  align-items: center;
+  gap: 4rem;
+  padding: 5rem 4rem 5rem 5rem;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 55%; height: 100%;
+  background: linear-gradient(135deg, var(--orange-pale) 0%, var(--lav-pale) 100%);
+  border-radius: 0 0 0 120px;
+  z-index: -1;
+}
+
+.hero-left {}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--lav-pale);
+  border: 1px solid var(--lav-mid);
+  color: var(--lavender);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--lavender);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+.hero-name {
+  font-family: var(--play);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-name .accent-o { color: var(--orange); }
+.hero-name .accent-l { color: var(--lavender); }
+
+.hero-title {
+  font-size: 1.05rem;
+  color: var(--ink3);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.hero-tagline {
+  font-family: var(--play);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--ink2);
+  max-width: 520px;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+}
+
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, var(--orange), #e8520f);
+  color: #fff;
+  font-size: 0.85rem; font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(244,103,26,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(244,103,26,0.35); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0.85rem 2rem;
+  background: var(--lav-pale);
+  border: 1px solid var(--lav-mid);
+  color: var(--lavender);
+  font-size: 0.85rem; font-weight: 600;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--lav-mid); }
+
+/* HERO BENTO RIGHT */
+.hero-bento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1rem;
+}
+
+.hb-card {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.9);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.hb-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+.hb-card.wide { grid-column: 1 / -1; }
+
+.hb-card.orange-card {
+  background: linear-gradient(135deg, var(--orange), #e8520f);
+  border: none; color: #fff;
+}
+
+.hb-card.lav-card {
+  background: linear-gradient(135deg, var(--lavender), var(--lav-light));
+  border: none; color: #fff;
+}
+
+.hb-num {
+  font-family: var(--play);
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.hb-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  opacity: 0.75;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hb-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.hb-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem; }
+.hb-desc { font-size: 0.75rem; opacity: 0.75; line-height: 1.55; }
+
+.skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+.skill-pill {
+  font-size: 0.65rem; font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  background: rgba(255,255,255,0.2);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* QUICK STATS STRIP */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-cell {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: background 0.2s;
+}
+.stat-cell:hover { background: var(--off); }
+
+.stat-big {
+  font-family: var(--play);
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--orange), var(--lavender));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label { font-size: 0.82rem; color: var(--ink3); }
+
+/* ══════════════════════════════════════
+   PAGE 2 — ABOUT
+══════════════════════════════════════ */
+
+.about-page { padding: 5rem; }
+
+.section-header { margin-bottom: 3.5rem; }
+
+.section-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--play);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.08;
+  color: var(--ink);
+}
+
+.section-title em { font-style: italic; color: var(--lavender); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  color: var(--ink2);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+.interest-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+
+.chip {
+  font-size: 0.78rem; font-weight: 500;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+}
+
+.chip-orange { background: var(--orange-pale); color: var(--orange); border: 1px solid var(--orange-mid); }
+.chip-lav    { background: var(--lav-pale);    color: var(--lavender); border: 1px solid var(--lav-mid); }
+
+/* GLASS PROFILE CARD */
+.profile-glass {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.95);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  position: sticky; top: 80px;
+}
+
+.avatar-ring {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--lavender));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.2rem;
+  padding: 3px;
+}
+
+.avatar-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: var(--lav-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--play);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--lavender);
+}
+
+.profile-name {
+  font-family: var(--play);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.profile-role { font-size: 0.8rem; color: var(--ink3); margin-bottom: 1.5rem; }
+
+.profile-links { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.profile-link {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.6rem 1rem;
+  background: var(--off);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem; color: var(--ink2);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.profile-link:hover { background: var(--orange-pale); color: var(--orange); }
+
+.profile-link-icon { font-size: 1rem; width: 20px; text-align: center; }
+
+/* EDUCATION SECTION */
+.education { margin-top: 5rem; }
+
+.edu-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+
+.edu-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.edu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.edu-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.edu-card:nth-child(1)::before { background: linear-gradient(90deg, var(--orange), var(--orange-light)); }
+.edu-card:nth-child(2)::before { background: linear-gradient(90deg, var(--lavender), var(--lav-light)); }
+.edu-card:nth-child(3)::before { background: linear-gradient(90deg, var(--orange-light), var(--lavender)); }
+
+.edu-degree { font-family: var(--play); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+.edu-uni { font-size: 0.82rem; color: var(--ink3); margin-bottom: 0.5rem; }
+.edu-year { font-family: var(--mono); font-size: 0.7rem; color: var(--orange); letter-spacing: 0.08em; }
+.edu-gpa {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-family: var(--play);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--lavender);
+}
+
+/* ══════════════════════════════════════
+   PAGE 3 — RESEARCH & PUBLICATIONS
+══════════════════════════════════════ */
+
+.research-page { padding: 5rem; }
+
+.pub-grid { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2.5rem; }
+
+.pub-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.pub-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--orange), var(--lavender));
+  border-radius: 4px 0 0 4px;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.pub-card:hover { box-shadow: var(--shadow-md); border-color: transparent; transform: translateX(4px); }
+.pub-card:hover::before { opacity: 1; }
+
+.pub-title {
+  font-family: var(--play);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.pub-authors { font-size: 0.78rem; color: var(--ink3); margin-bottom: 0.4rem; }
+.pub-authors strong { color: var(--orange); }
+
+.pub-venue {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--lavender);
+}
+
+.pub-year-badge {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  padding: 0.3rem 0.75rem;
+  background: var(--orange-pale);
+  color: var(--orange);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* RESEARCH AREAS BENTO */
+.research-areas { margin-top: 5rem; }
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.bento-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+.bento-card.tall { grid-row: span 2; display: flex; flex-direction: column; justify-content: space-between; }
+
+.bento-card.gradient-o {
+  background: linear-gradient(135deg, var(--orange-pale), var(--orange-mid));
+  border-color: var(--orange-mid);
+}
+
+.bento-card.gradient-l {
+  background: linear-gradient(135deg, var(--lav-pale), var(--lav-mid));
+  border-color: var(--lav-mid);
+}
+
+.bento-big-text {
+  font-family: var(--play);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.bento-big-text .highlight { color: var(--orange); }
+.bento-big-text .highlight-l { color: var(--lavender); }
+
+.bento-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.bento-card-title { font-size: 0.92rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
+.bento-card-desc { font-size: 0.8rem; color: var(--ink3); line-height: 1.75; }
+
+/* ══════════════════════════════════════
+   PAGE 4 — SKILLS & EXPERIENCE
+══════════════════════════════════════ */
+
+.skills-page { padding: 5rem; }
+
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 2.5rem;
+}
+
+.skill-group { margin-bottom: 2.5rem; }
+
+.skill-group-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 1.2rem;
+  font-family: var(--mono);
+}
+
+.skill-item { margin-bottom: 1.1rem; }
+
+.skill-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.skill-name { font-size: 0.85rem; font-weight: 500; color: var(--ink2); }
+.skill-pct  { font-family: var(--mono); font-size: 0.7rem; color: var(--ink4); }
+
+.skill-bar {
+  height: 6px;
+  background: var(--off);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--orange), var(--lavender));
+  animation: fillbar 1.2s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes fillbar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* EXPERIENCE TIMELINE */
+.timeline-section { margin-top: 5rem; }
+
+.timeline {
+  position: relative;
+  margin-top: 2.5rem;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--orange), var(--lavender), transparent);
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 2.2rem;
+  padding-left: 2rem;
+}
+
+.tl-dot {
+  position: absolute; left: -2.4rem; top: 0.3rem;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--lavender));
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--orange-mid);
+}
+
+.tl-header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+
+.tl-role { font-size: 0.92rem; font-weight: 600; color: var(--ink); }
+.tl-org  { font-size: 0.82rem; color: var(--lavender); font-weight: 500; }
+.tl-date { font-family: var(--mono); font-size: 0.68rem; color: var(--ink4); white-space: nowrap; }
+.tl-desc { font-size: 0.8rem; color: var(--ink3); line-height: 1.7; }
+
+/* ══════════════════════════════════════
+   PAGE 5 — CONTACT
+══════════════════════════════════════ */
+
+.contact-page {
+  padding: 5rem;
+  min-height: calc(100vh - 60px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.contact-left {}
+
+.contact-form {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+.form-input, .form-textarea {
+  padding: 0.85rem 1.1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 4px var(--orange-pale);
+}
+
+.form-textarea { resize: vertical; min-height: 130px; }
+
+.contact-right { padding-top: 2.5rem; }
+
+.contact-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; }
+
+.contact-card {
+  display: flex; align-items: center; gap: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.2s;
+}
+
+.contact-card:hover {
+  border-color: var(--orange-mid);
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.cc-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.cc-icon.orange { background: var(--orange-pale); }
+.cc-icon.lav    { background: var(--lav-pale); }
+
+.cc-label { font-size: 0.72rem; color: var(--ink4); margin-bottom: 0.15rem; }
+.cc-value { font-size: 0.88rem; font-weight: 500; color: var(--ink2); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.78rem;
+  position: relative; z-index: 1;
+}
+footer strong { color: rgba(255,255,255,0.8); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero, .about-grid, .contact-page { grid-template-columns: 1fr; }
+  .hero::before { display: none; }
+  .hero { padding: 3rem 2rem; }
+  .about-page, .research-page, .skills-page, .contact-page { padding: 3rem 2rem; }
+  .edu-cards, .bento-grid, .stats-strip { grid-template-columns: 1fr 1fr; }
+  .skills-layout { grid-template-columns: 1fr; }
+  .hero-bento { display: none; }
+  nav { padding: 0 1rem; }
+  .tab-bar { gap: 0; }
+  .tab-btn { padding: 0.35rem 0.65rem; font-size: 0.68rem; }
+  .nav-cta { display: none; }
+}
+
+@media (max-width: 600px) {
+  .edu-cards, .bento-grid, .stats-strip, .pioneer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-dot"></span>
+    Nithya Kruthi
+  </a>
+  <ul class="tab-bar">
+    <li><button class="tab-btn active" data-tab="home" onclick="switchTab('home')">🏠 Home</button></li>
+    <li><button class="tab-btn" data-tab="about" onclick="switchTab('about')">👩‍🔬 About</button></li>
+    <li><button class="tab-btn" data-tab="research" onclick="switchTab('research')">🧬 Research</button></li>
+    <li><button class="tab-btn" data-tab="skills" onclick="switchTab('skills')">⚡ Skills & Experience</button></li>
+    <li><button class="tab-btn" data-tab="contact" onclick="switchTab('contact')">✉️ Contact</button></li>
+  </ul>
+  <a href="mailto:machankrao@gmail.com" class="nav-cta">Get in Touch →</a>
+</nav>
+
+<!-- ══════ PAGE: HOME ══════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        PhD Candidate · Queensland University of Technology
+      </div>
+      <h1 class="hero-name">
+        M. <span class="accent-o">Nithya</span><br><span class="accent-l">Kruthi</span>
+      </h1>
+      <p class="hero-title">Bioinformatician · HR & Marketing Professional · Researcher</p>
+      <p class="hero-tagline">"Bridging the language of DNA with the language of people — one dataset at a time."</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" onclick="switchTab('research'); return false;">🧬 View Research</a>
+        <a href="#" class="btn-secondary" onclick="switchTab('contact'); return false;">✉️ Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-bento">
+      <!-- row 1 -->
+      <div class="hb-card orange-card">
+        <div class="hb-num">7+</div>
+        <div class="hb-label">Publications</div>
+      </div>
+      <div class="hb-card lav-card">
+        <div class="hb-num">9.12</div>
+        <div class="hb-label">MSc CGPA</div>
+      </div>
+      <!-- row 2 -->
+      <div class="hb-card wide" style="background:linear-gradient(135deg,var(--orange-pale),var(--lav-pale));border:1px solid var(--lav-mid);">
+        <div class="hb-icon">🧬</div>
+        <div class="hb-title" style="color:var(--lavender);">Core Research Focus</div>
+        <div class="hb-desc" style="color:var(--ink3);">Protein structure prediction, gut microbiome analysis, medical image mining, clinical genomics & drug discovery.</div>
+        <div class="skill-pills">
+          <span class="skill-pill" style="background:var(--orange-pale);color:var(--orange);border-color:var(--orange-mid);">AlphaFold</span>
+          <span class="skill-pill" style="background:var(--lav-pale);color:var(--lavender);border-color:var(--lav-mid);">Genomics</span>
+          <span class="skill-pill" style="background:var(--orange-pale);color:var(--orange);border-color:var(--orange-mid);">Python</span>
+          <span class="skill-pill" style="background:var(--lav-pale);color:var(--lavender);border-color:var(--lav-mid);">ML</span>
+        </div>
+      </div>
+      <!-- row 3 -->
+      <div class="hb-card" style="background:var(--off);">
+        <div class="hb-icon">🏆</div>
+        <div class="hb-title">State 1st Prize</div>
+        <div class="hb-desc">Gignasa student project award in English</div>
+      </div>
+      <div class="hb-card" style="background:var(--off);">
+        <div class="hb-icon">🌏</div>
+        <div class="hb-title">Brisbane, AU</div>
+        <div class="hb-desc">QUT · PhD 2024–2027</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stat-cell">
+      <div class="stat-big">20+</div>
+      <div class="stat-label">Roles & Internships</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">7+</div>
+      <div class="stat-label">Publications</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">15+</div>
+      <div class="stat-label">Campus Outreach Orgs</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">9.24</div>
+      <div class="stat-label">BSc CGPA / 10</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE: ABOUT ══════ -->
+<div class="page" id="page-about">
+  <div class="about-page">
+    <div class="section-header">
+      <p class="section-eyebrow">// 01 — About Me</p>
+      <h2 class="section-title">Scientist. <em>Storyteller.</em><br>Community Builder.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am <strong>M. Nithya Kruthi</strong> — a PhD candidate in Bioinformatics at Queensland University of Technology (2024–2027), bringing together a rare combination of deep scientific rigour and people-centred professional skills. My research sits at the intersection of genomics, computational biology, and clinical applications.</p>
+        <p>With an MSc in Bioinformatics from Amity University (CGPA 9.12/10) and a BSc from Osmania University (CGPA 9.24/10), I have built strong foundations in both wet-lab and in-silico methods, complemented by hands-on experience across bioinformatics pipelines, grant writing, and scientific communication.</p>
+        <p>Beyond the bench, I bring proven expertise in HR coordination, talent engagement, community building, and marketing — roles in which I have coordinated high-volume recruitment, driven campus outreach across 15+ institutions, and crafted campaigns that connect people with ideas.</p>
+        <p>My interests include violin, yoga, reading, and community service — and I believe deeply that the best science is done by people who are fully human.</p>
+        <div class="interest-chips">
+          <span class="chip chip-orange">Genomics</span>
+          <span class="chip chip-lav">Protein Structure</span>
+          <span class="chip chip-orange">Clinical Bioinformatics</span>
+          <span class="chip chip-lav">Drug Discovery</span>
+          <span class="chip chip-orange">Gut Microbiome</span>
+          <span class="chip chip-lav">Scientific Communication</span>
+          <span class="chip chip-orange">Community Building</span>
+          <span class="chip chip-lav">Grant Writing</span>
+        </div>
+      </div>
+
+      <div class="profile-glass">
+        <div class="avatar-ring">
+          <div class="avatar-inner">NK</div>
+        </div>
+        <div class="profile-name">M. Nithya Kruthi</div>
+        <div class="profile-role">PhD Candidate · QUT, Brisbane</div>
+        <div class="profile-links">
+          <a href="mailto:machankrao@gmail.com" class="profile-link">
+            <span class="profile-link-icon">📧</span>
+            machankrao@gmail.com
+          </a>
+          <a href="tel:+61490454923" class="profile-link">
+            <span class="profile-link-icon">📞</span>
+            +61 490 454 923
+          </a>
+          <a href="https://linkedin.com/in/inspirekruthirao93939393" class="profile-link">
+            <span class="profile-link-icon">💼</span>
+            LinkedIn
+          </a>
+          <a href="#" class="profile-link">
+            <span class="profile-link-icon">🎓</span>
+            Google Scholar
+          </a>
+          <a href="#" class="profile-link">
+            <span class="profile-link-icon">💻</span>
+            GitHub
+          </a>
+          <a href="#" class="profile-link">
+            <span class="profile-link-icon">🔬</span>
+            ORCID
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="education">
+      <div class="section-header">
+        <p class="section-eyebrow">// Education</p>
+        <h2 class="section-title">Academic <em>Journey</em></h2>
+      </div>
+      <div class="edu-cards">
+        <div class="edu-card">
+          <div class="edu-degree">PhD in Bioinformatics</div>
+          <div class="edu-uni">Queensland University of Technology</div>
+          <div class="edu-year">2024 – 2027 (In Progress)</div>
+          <div style="margin-top:1rem;font-size:0.8rem;color:var(--ink3);">Computational genomics research at the intersection of clinical bioinformatics and machine learning.</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">MSc in Bioinformatics</div>
+          <div class="edu-uni">Amity University, Noida</div>
+          <div class="edu-year">2021 – 2023</div>
+          <div class="edu-gpa">9.12<span style="font-size:1rem;color:var(--ink3)">/10</span></div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">BSc Biotechnology, Zoology & Chemistry</div>
+          <div class="edu-uni">Osmania University</div>
+          <div class="edu-year">2018 – 2021</div>
+          <div class="edu-gpa">9.24<span style="font-size:1rem;color:var(--ink3)">/10</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE: RESEARCH ══════ -->
+<div class="page" id="page-research">
+  <div class="research-page">
+    <div class="section-header">
+      <p class="section-eyebrow">// 02 — Research & Publications</p>
+      <h2 class="section-title">Where Data Meets <em>Discovery</em></h2>
+    </div>
+
+    <!-- PUBLICATIONS -->
+    <div class="pub-grid">
+      <div class="pub-card">
+        <div>
+          <div class="pub-title">Medical Image Mining Using Data Mining Techniques</div>
+          <div class="pub-authors"><strong>Macha, Nithya Kruthi</strong> et al.</div>
+          <div class="pub-venue">Mining Biomedical Text, Images and Visual Features for Information Retrieval · Elsevier</div>
+        </div>
+        <span class="pub-year-badge">2025</span>
+      </div>
+      <div class="pub-card">
+        <div>
+          <div class="pub-title">Genetic Polymorphisms in RNF138, ABCA1 and ESRRG-GPATCH2 Genes</div>
+          <div class="pub-authors">Thummala, Sabitha, <strong>Nithya Kruthi</strong> et al.</div>
+          <div class="pub-venue">Journal of Clinical and Diagnostic Research</div>
+        </div>
+        <span class="pub-year-badge">2025</span>
+      </div>
+      <div class="pub-card">
+        <div>
+          <div class="pub-title">Capturing Global Pet Dog Gut Microbial Diversity</div>
+          <div class="pub-authors">Cusco, Anna, <strong>Nithya Kruthi</strong> et al.</div>
+          <div class="pub-venue">bioRxiv (preprint)</div>
+        </div>
+        <span class="pub-year-badge">2025</span>
+      </div>
+      <div class="pub-card">
+        <div>
+          <div class="pub-title">Unveiling Genetic Associations: Investigating CLDN16, GRID2, NRG3, and CACNG4 Gene Polymorphisms</div>
+          <div class="pub-authors">Thummala, Sabitha, Nithya Kruthi et al.</div>
+          <div class="pub-venue">International Journal of Bioinformatics and Biological Science 11(1&2)</div>
+        </div>
+        <span class="pub-year-badge">2023</span>
+      </div>
+      <div class="pub-card">
+        <div>
+          <div class="pub-title">Application of Bioinformatics: Integrated Computational Tools in Green Technologies</div>
+          <div class="pub-authors"><strong>Kruthi, S.</strong></div>
+          <div class="pub-venue">Scientific Communication</div>
+        </div>
+        <span class="pub-year-badge" style="background:var(--lav-pale);color:var(--lavender);">Review</span>
+      </div>
+      <div class="pub-card">
+        <div>
+          <div class="pub-title">Short and Long Non-Coding RNA Biomarkers in Cancer</div>
+          <div class="pub-authors">Nithya Kruthi et al.</div>
+          <div class="pub-venue">Oncology Research</div>
+        </div>
+        <span class="pub-year-badge" style="background:var(--lav-pale);color:var(--lavender);">Review</span>
+      </div>
+      <div class="pub-card">
+        <div>
+          <div class="pub-title">Computational Prediction of Chlamydia Polymorphic Membrane Protein-Like Protein as a Diagnostic Marker for Bovine Trichomonosis</div>
+          <div class="pub-authors">Nithya Kruthi et al.</div>
+          <div class="pub-venue">Veterinary Microbiology</div>
+        </div>
+        <span class="pub-year-badge" style="background:var(--lav-pale);color:var(--lavender);">In Silico</span>
+      </div>
+      <div class="pub-card">
+        <div>
+          <div class="pub-title">In Silico Evaluation of Antifungal Compounds from Nigella Sativa Against Black Fungus</div>
+          <div class="pub-authors">Nithya Kruthi et al.</div>
+          <div class="pub-venue">Journal of Ethnopharmacology</div>
+        </div>
+        <span class="pub-year-badge" style="background:var(--lav-pale);color:var(--lavender);">In Silico</span>
+      </div>
+    </div>
+
+    <!-- RESEARCH AREAS BENTO -->
+    <div class="research-areas">
+      <div class="section-header">
+        <p class="section-eyebrow">// Research Areas</p>
+        <h2 class="section-title">Active <em>Frontiers</em></h2>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card tall gradient-o">
+          <div>
+            <div class="bento-card-icon">🦠</div>
+            <div class="bento-card-title" style="font-size:1rem;color:var(--ink);">Microbiome & Genomics</div>
+            <div class="bento-card-desc" style="color:var(--ink2);">Capturing global pet dog gut microbial diversity and applying metagenomic tools to understand host-microbiome interactions in clinical contexts.</div>
+          </div>
+          <div class="bento-big-text"><span class="highlight">Gut</span><br>Micro-<br>biome</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-card-icon">🧠</div>
+          <div class="bento-card-title">Medical Image Mining</div>
+          <div class="bento-card-desc">Applying data mining and machine learning to extract clinically meaningful patterns from biomedical images at scale.</div>
+        </div>
+        <div class="bento-card gradient-l">
+          <div class="bento-big-text" style="color:var(--lavender);">Drug<br><span style="color:var(--orange);">Disco</span>very</div>
+          <div class="bento-card-desc" style="color:var(--ink2);margin-top:1rem;">In silico screening of natural compounds against fungal pathogens and bacterial targets using molecular docking.</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-card-icon">🧬</div>
+          <div class="bento-card-title">Clinical Genomics</div>
+          <div class="bento-card-desc">Investigating genetic polymorphisms in complex disease using population-level variant analysis and bioinformatics pipelines.</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-card-icon">🔬</div>
+          <div class="bento-card-title">RNA Biomarkers in Cancer</div>
+          <div class="bento-card-desc">Systematic review and computational analysis of non-coding RNA signatures as diagnostic and prognostic markers in oncology.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE: SKILLS & EXPERIENCE ══════ -->
+<div class="page" id="page-skills">
+  <div class="skills-page">
+    <div class="section-header">
+      <p class="section-eyebrow">// 03 — Skills & Experience</p>
+      <h2 class="section-title">Expertise Across <em>Two Worlds</em></h2>
+    </div>
+
+    <div class="skills-layout">
+      <!-- BIOINFORMATICS SKILLS -->
+      <div>
+        <div class="skill-group">
+          <div class="skill-group-title">Bioinformatics & Programming</div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Python (BioPython, NumPy, Pandas)</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Shell / Bash Scripting</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">R (Bioconductor)</span><span class="skill-pct">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Linux / HPC Environments</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Molecular Docking (AutoDock, GROMACS)</span><span class="skill-pct">70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">NGS Pipeline Analysis</span><span class="skill-pct">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Scientific Tools</div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Inkscape / Adobe Illustrator</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">MS Excel / PowerPoint</span><span class="skill-pct">95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Canva / Adobe Suite</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HR & MARKETING SKILLS -->
+      <div>
+        <div class="skill-group">
+          <div class="skill-group-title">HR & Talent</div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Recruitment Coordination</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Applicant Screening & Interviews</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Community Building</span><span class="skill-pct">95%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Stakeholder Communication</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Marketing & Communication</div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Social Media Marketing</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Content Writing & Copywriting</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Grant Writing</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Lead Generation</span><span class="skill-pct">82%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <div class="timeline-section">
+      <div class="section-header">
+        <p class="section-eyebrow">// Experience</p>
+        <h2 class="section-title">Career <em>Timeline</em></h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Community Building Intern</div>
+              <div class="tl-org">India Bioscience</div>
+            </div>
+            <span class="tl-date">May 2024 – Sep 2024</span>
+          </div>
+          <div class="tl-desc">Supported community engagement for researchers and students through outreach, coordination, and online communication. Maintained active participation across remote activities with timely stakeholder follow-up.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Bioinformatician</div>
+              <div class="tl-org">NuGenomics</div>
+            </div>
+            <span class="tl-date">Jan 2024 – Jul 2024</span>
+          </div>
+          <div class="tl-desc">Contributed to bioinformatics project execution, reporting, and cross-functional coordination. Supported documentation and structured analysis working with scientific and operational teams.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Grant Writing Intern</div>
+              <div class="tl-org">NuGenomics</div>
+            </div>
+            <span class="tl-date">Sep 2023 – Jan 2024</span>
+          </div>
+          <div class="tl-desc">Researched grant opportunities and prepared application content with attention to detail and deadlines. Strengthened scientific writing and multi-stakeholder coordination skills.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Bioinformatics Intern</div>
+              <div class="tl-org">IIT Guwahati</div>
+            </div>
+            <span class="tl-date">Dec 2022 – Apr 2023</span>
+          </div>
+          <div class="tl-desc">Supported bioinformatics analysis and research tasks in a remote academic setting, developing computational skills across sequence analysis and data pipelines.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Junior Application Scientist Intern</div>
+              <div class="tl-org">RASA Life Science Informatics</div>
+            </div>
+            <span class="tl-date">Jan 2023 – Jul 2023</span>
+          </div>
+          <div class="tl-desc">Assisted with application support, documentation, and communication for technical and scientific stakeholders. Worked with internal teams on timely client-facing tasks.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Clinical Bioinformatics Intern</div>
+              <div class="tl-org">4baseCare</div>
+            </div>
+            <span class="tl-date">Jan 2023 – Jun 2023</span>
+          </div>
+          <div class="tl-desc">Supported clinical bioinformatics workflows with careful data handling, documentation, and coordination. Developed strong confidentiality awareness and structured reporting habits.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Bioinformatics Research Intern</div>
+              <div class="tl-org">Jawaharlal Nehru University</div>
+            </div>
+            <span class="tl-date">Jun 2022 – Aug 2022</span>
+          </div>
+          <div class="tl-desc">Worked on drug discovery case studies, research paper writing, and MD simulation tasks in a prestigious academic environment.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Operations Consultant</div>
+              <div class="tl-org">ImpactGuru</div>
+            </div>
+            <span class="tl-date">Sep 2020 – Sep 2021</span>
+          </div>
+          <div class="tl-desc">Partnered with doctors and hospitals to support alliances, patient referrals, and outreach. Built lead data, supported campaign calling, and managed operational follow-up.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Campus Ambassador & Outreach</div>
+              <div class="tl-org">IndiaBioscience, IIT Bombay, IIT Roorkee, XLRI & 10+ others</div>
+            </div>
+            <span class="tl-date">2020 – 2023</span>
+          </div>
+          <div class="tl-desc">Promoted events, drove registrations, and built community across 15+ prestigious institutions. Strong exposure in marketing coordination, buzz creation, and online promotion.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE: CONTACT ══════ -->
+<div class="page" id="page-contact">
+  <div class="contact-page">
+    <div class="contact-left">
+      <div class="section-header">
+        <p class="section-eyebrow">// 04 — Get in Touch</p>
+        <h2 class="section-title">Let's <em>Connect</em></h2>
+      </div>
+      <p style="font-size:0.95rem;color:var(--ink3);line-height:1.8;max-width:450px;margin-bottom:0.5rem;">
+        Whether you're looking to collaborate on research, discuss bioinformatics, 
+        explore HR/marketing opportunities, or simply connect — I'd love to hear from you.
+      </p>
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="Jane Smith" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="jane@university.edu" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input class="form-input" type="text" placeholder="Research collaboration / Job opportunity / Hello!">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell me about your project, opportunity, or question…" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;">
+          Send Message →
+        </button>
+        <div id="form-success" style="display:none;color:var(--lavender);font-size:0.85rem;font-weight:500;">✅ Message sent! I'll get back to you soon.</div>
+      </form>
+    </div>
+
+    <div class="contact-right">
+      <div class="section-header" style="margin-bottom:0;">
+        <p class="section-eyebrow">// Find Me Online</p>
+        <h2 class="section-title" style="font-size:2rem;">Stay <em>Connected</em></h2>
+      </div>
+      <div class="contact-cards">
+        <a href="mailto:machankrao@gmail.com" class="contact-card">
+          <div class="cc-icon orange">📧</div>
+          <div>
+            <div class="cc-label">Email</div>
+            <div class="cc-value">machankrao@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+61490454923" class="contact-card">
+          <div class="cc-icon lav">📞</div>
+          <div>
+            <div class="cc-label">Phone</div>
+            <div class="cc-value">+61 490 454 923</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/inspirekruthirao93939393" class="contact-card" target="_blank">
+          <div class="cc-icon orange">💼</div>
+          <div>
+            <div class="cc-label">LinkedIn</div>
+            <div class="cc-value">inspirekruthirao93939393</div>
+          </div>
+        </a>
+        <a href="#" class="contact-card">
+          <div class="cc-icon lav">🎓</div>
+          <div>
+            <div class="cc-label">Google Scholar</div>
+            <div class="cc-value">M. Nithya Kruthi</div>
+          </div>
+        </a>
+        <a href="#" class="contact-card">
+          <div class="cc-icon orange">💻</div>
+          <div>
+            <div class="cc-label">GitHub</div>
+            <div class="cc-value">@nithyakruthi</div>
+          </div>
+        </a>
+        <a href="#" class="contact-card">
+          <div class="cc-icon lav">🔬</div>
+          <div>
+            <div class="cc-label">ORCID</div>
+            <div class="cc-value">View Profile →</div>
+          </div>
+        </a>
+        <div class="contact-card" style="background:var(--off);cursor:default;">
+          <div class="cc-icon orange">📍</div>
+          <div>
+            <div class="cc-label">Location</div>
+            <div class="cc-value">Chermside West, QLD, Australia</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AWARDS MINI -->
+      <div style="margin-top:2.5rem;background:linear-gradient(135deg,var(--orange-pale),var(--lav-pale));border-radius:var(--radius);padding:1.8rem;border:1px solid var(--orange-mid);">
+        <p class="section-eyebrow" style="margin-bottom:1rem;">🏆 Awards & Achievements</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
+          <li style="font-size:0.82rem;color:var(--ink2);">🥇 State 1st Prize — Gignasa Student Project (English)</li>
+          <li style="font-size:0.82rem;color:var(--ink2);">🥈 State 2nd &amp; District 1st — Speed Reading English</li>
+          <li style="font-size:0.82rem;color:var(--ink2);">🎤 1st Prize — Elocution, Ramakrishna Math</li>
+          <li style="font-size:0.82rem;color:var(--ink2);">📺 Selected for T-SAT Nipuna Student-Teacher Programme</li>
+          <li style="font-size:0.82rem;color:var(--ink2);">🎻 Violinist · 🧘 Yogi · 📚 Avid Reader</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 <strong>M. Nithya Kruthi</strong> · PhD Researcher · Bioinformatician · Brisbane, AU
+</footer>
+
+<script>
+/* ─── TAB SWITCHING ─── */
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelector('[data-tab="' + name + '"]').classList.add('active');
+  document.getElementById('page-' + name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ─── FORM ─── */
+function handleForm(e) {
+  e.preventDefault();
+  document.getElementById('form-success').style.display = 'block';
+  e.target.reset();
+}
+
+/* ─── PARTICLES ─── */
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const COLORS = ['rgba(244,103,26,', 'rgba(124,92,191,', 'rgba(255,154,92,', 'rgba(169,135,224,'];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function Particle() {
+    this.x  = Math.random() * W;
+    this.y  = Math.random() * H;
+    this.r  = Math.random() * 2.5 + 0.5;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.color = COLORS[Math.floor(Math.random() * COLORS.length)] + (Math.random() * 0.25 + 0.05) + ')';
+  }
+
+  function init() {
+    resize();
+    particles = [];
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+    });
+    // connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(124,92,191,' + (0.06 * (1 - d/120)) + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', init);
+  init();
+  draw();
+})();
+</script>
+</body>
+</html>
